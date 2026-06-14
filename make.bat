@@ -1,0 +1,1 @@
+gcc main.c dxtencode.c stb_image_impl.c -o dxt_cpt -O3 -lm -fopenmp -march=native -Wall -std=c99

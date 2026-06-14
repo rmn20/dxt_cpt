@@ -1,0 +1,1 @@
+void encodeDXT1(void* output, void* image, int w, int h);
