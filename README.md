@@ -13,8 +13,8 @@ Options:
 -mip - Generate mipmaps  
 
 ## Comparison to bc7enc
-Encoder quality was evaluated on 761 1024x ARM textures from polyhaven. Bc7enc is used as the reference encoder as it seems to outperform all other available BC1 encoders (at least in 2020 benchmarks).
-
+Encoder quality was evaluated on 761 1024x ARM textures from polyhaven.  
+Bc7enc is used as the reference encoder as it seems to outperform all other available BC1 encoders (at least in 2020 benchmarks).
 ```
 2026.06.15
 SSIM (higher is better):
