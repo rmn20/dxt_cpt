@@ -23,7 +23,7 @@ DXTCPT: 0.9342
 
 RMSE (lower is better):
 BC7ENC: 4.0987
-DXTCPT: 4.4583
+DXTCPT: 4.4580
 
 LPIPS (lower is better):
 BC7ENC: 0.0496
@@ -32,7 +32,16 @@ DXTCPT: 0.0453
 Bc7enc encoding time is much longer compared to dxt_cpt as high-quality L18 mode is used.  
 As you can see, bc7enc outperforms dxt_cpt on all traditional metrics, but loses (in 394 cases out of 761) on more modern LPIPS.
 
+Here's 3 textures with best and worst results compared to bc7enc on LPIPS:
+|3 Best textures|3 Worst textures|
+|:---:|:---:|
+|![](benchmarks/lpips_best1_book_pattern_arm_1k.png)|![](benchmarks/lpips_worst1_aerial_beach_01_arm_1k.png)|
+|![](benchmarks/lpips_best2_denim_fabric_05_arm_1k.png)|![](benchmarks/lpips_worst2_wood_planks_dirt_arm_1k.png)
+|![](benchmarks/lpips_best3_leather_white_arm_1k.png)|![](benchmarks/lpips_worst3_roof_07_arm_1k.png)|
+
+See [benchmarks folder](/benchmarks/) for more data.
 ## Todo
+Reduce endpoints quantization errors
 Try exhaustive endpoints search  
 Support for regular color textures (?)  
 Channel weighting  
