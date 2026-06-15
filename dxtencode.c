@@ -211,15 +211,6 @@ int compareInts(const void* a, const void* b) {
     return 0;
 }
 
-int compareFloats(const void* a, const void* b) {
-    float arg1 = *(const float*)a;
-    float arg2 = *(const float*)b;
-
-    if (arg1 < arg2) return -1;
-    if (arg1 > arg2) return 1;
-    return 0;
-}
-
 void encodeDXT1(void* output, void* image, int w, int h) {
 	uint8_t* img = image;
 	
