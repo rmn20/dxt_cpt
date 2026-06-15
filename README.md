@@ -41,7 +41,7 @@ Here's 3 textures with best and worst results compared to bc7enc on LPIPS:
 
 See [benchmarks folder](/benchmarks/) for more data.
 ## Todo
-Reduce endpoints quantization errors
+Reduce endpoints quantization errors  
 Try exhaustive endpoints search  
 Support for regular color textures (?)  
 Channel weighting  
