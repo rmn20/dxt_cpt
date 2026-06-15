@@ -30,10 +30,10 @@ BC7ENC: 0.0496
 DXTCPT: 0.0453
 ```
 Bc7enc encoding time is much longer compared to dxt_cpt as high-quality L18 mode is used.  
-As you can see, bc7enc outperforms dxt_cpt on all traditional metrics, but loses (in 394 cases out of 761) on more modern LPIPS.
+As you can see, bc7enc slightly outperforms dxt_cpt on all traditional metrics, but loses (in 394 cases out of 761) on more modern LPIPS.
 
 ## Todo
-Try exhaustive endpoints search
+Try exhaustive endpoints search  
 Support for regular color textures (?)  
 Channel weighting  
 Adaptive weighting (?)  
