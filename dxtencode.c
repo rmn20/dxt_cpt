@@ -211,6 +211,15 @@ int compareInts(const void* a, const void* b) {
     return 0;
 }
 
+int compareFloats(const void* a, const void* b) {
+    float arg1 = *(const float*)a;
+    float arg2 = *(const float*)b;
+
+    if (arg1 < arg2) return -1;
+    if (arg1 > arg2) return 1;
+    return 0;
+}
+
 void encodeDXT1(void* output, void* image, int w, int h) {
 	uint8_t* img = image;
 	
@@ -276,6 +285,23 @@ void encodeDXT1(void* output, void* image, int w, int h) {
 			
 			float axis[3] = {max[0] - min[0], max[1] - min[1], max[2] - min[2]};
 			
+			//Quick fix for cases when principal axis is perpendicular to (1, 1, 1)
+			float maxVar = cov[0];
+			int maxVarAxis = 0;
+			if(cov[3] > maxVar) {maxVarAxis = 1; maxVar = cov[3];}
+			if(cov[5] > maxVar) {maxVarAxis = 2; maxVar = cov[5];}
+			
+			if(maxVarAxis == 0) {
+				axis[1] *= cov[1] > 0 ? 1 : -1;
+				axis[2] *= cov[2] > 0 ? 1 : -1;
+			} else if(maxVarAxis == 1) {
+				axis[0] *= cov[1] > 0 ? 1 : -1;
+				axis[2] *= cov[4] > 0 ? 1 : -1;
+			} else {
+				axis[0] *= cov[2] > 0 ? 1 : -1;
+				axis[1] *= cov[4] > 0 ? 1 : -1;
+			}
+			
 			for(int i = 0; i < 20; i++) {
 				float r = axis[0] * cov[0] + axis[1] * cov[1] + axis[2] * cov[2];
 				float g = axis[0] * cov[1] + axis[1] * cov[3] + axis[2] * cov[4];
@@ -302,7 +328,7 @@ void encodeDXT1(void* output, void* image, int w, int h) {
 					float dot = r * axis[0] + g * axis[1] + b * axis[2];
 					
 					if(dot < minDotDist) minDotDist = dot;
-					if(dot > maxDotDist) maxDotDist  = dot;
+					if(dot > maxDotDist) maxDotDist = dot;
 				}
 			}
 			
