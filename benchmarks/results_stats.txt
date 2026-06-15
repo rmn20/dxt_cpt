@@ -1,0 +1,14 @@
+2026.06.15
+Images processed: 761 (1554 channels)
+
+SSIM (higher is better):
+BC7ENC: 0.9399
+DXTCPT: 0.9342
+
+RMSE (lower is better):
+BC7ENC: 4.0987
+DXTCPT: 4.4580
+
+LPIPS (lower is better):
+BC7ENC: 0.0496
+DXTCPT: 0.0453
