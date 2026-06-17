@@ -127,11 +127,37 @@ void normalize(float* vec) {
 	vec[2] *= invLev;
 }
 
+int round5f(float v) {
+	int vi = v;
+	
+	float midPoint = (
+		((vi       << 3) | (vi       >> 2)) + 
+		(((vi + 1) << 3) | ((vi + 1) >> 2))
+	) * 0.5f * 31 / 255;
+	
+	if(v >= midPoint) vi++;
+	
+	return vi;
+}
+
+int round6f(float v) {
+	int vi = v;
+	
+	float midPoint = (
+		((vi       << 2) | (vi       >> 4)) + 
+		(((vi + 1) << 2) | ((vi + 1) >> 4))
+	) * 0.5f * 63 / 255;
+	
+	if(v >= midPoint) vi++;
+	
+	return vi;
+}
+
 uint16_t encodeRGB565(float* col) {
 	return 
-		(((int) roundf(clampf(col[0] * 31 / 255, 0, 31))) << 11) |
-		(((int) roundf(clampf(col[1] * 63 / 255, 0, 63))) << 5) |
-		(((int) roundf(clampf(col[2] * 31 / 255, 0, 31))));
+		(((int) round5f(clampf(col[0] * 31 / 255, 0, 31))) << 11) |
+		(((int) round6f(clampf(col[1] * 63 / 255, 0, 63))) << 5) |
+		(((int) round5f(clampf(col[2] * 31 / 255, 0, 31))));
 }
 
 void decodeRGB565(uint16_t col, float* output) {
