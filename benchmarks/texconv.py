@@ -95,8 +95,6 @@ for img_idx, src in enumerate(png_files):
     
     for dim in range(max(3, img_channels)):
         src_ch = src_image[:, :, dim]
-        
-        if (src_ch == src_ch[0]).all(): continue
         img_channels += 1
         
         src_tensor = bw2tensor(src_ch)
