@@ -16,21 +16,22 @@ Options:
 Encoder quality was evaluated on 761 1024x ARM textures from polyhaven.  
 Bc7enc is used as the reference encoder as it seems to outperform all other available BC1 encoders (at least in 2020 benchmarks).
 ```
-2026.06.15
+2026.07.14
+
 SSIM (higher is better):
-BC7ENC: 0.9399
-DXTCPT: 0.9342
+BC7ENC: 0.9591
+DXTCPT: 0.9553
 
 RMSE (lower is better):
-BC7ENC: 4.0987
-DXTCPT: 4.4580
+BC7ENC: 3.3815
+DXTCPT: 3.6703
 
 LPIPS (lower is better):
-BC7ENC: 0.0496
-DXTCPT: 0.0453
+BC7ENC: 0.0337
+DXTCPT: 0.0308
 ```
 Bc7enc encoding time is much longer compared to dxt_cpt as high-quality L18 mode is used.  
-As you can see, bc7enc outperforms dxt_cpt on all traditional metrics, but loses (in 394 cases out of 761) on more modern LPIPS.
+As you can see, bc7enc outperforms dxt_cpt on all traditional metrics, but loses (in 403 cases out of 761) on more modern LPIPS.
 
 Here's 3 textures with best and worst results compared to bc7enc on LPIPS:
 |3 Best textures|3 Worst textures|
